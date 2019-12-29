@@ -14,8 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null) { // юезр не авторизований
+
+
+
         setContentView(R.layout.activity_main);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -43,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = password.getText().toString();
                 String uName = userName.getText().toString();
                 if(email.isEmpty()){
-                    emailId.setError("Please enter email id");
+                    emailId.setError("Будь ласка ведіть свою пошту");
                     emailId.requestFocus();
                 }
                 else  if(pwd.isEmpty()){
-                    password.setError("Please enter your password");
+                    password.setError("Будь ласка ведіть свій пароль");
                     password.requestFocus();
                 }
               /*  else  if(uName.isEmpty()){
@@ -55,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     password.requestFocus();
                 } */
                 else  if(email.isEmpty() && pwd.isEmpty()){ // && uName.isEmpty()){
-                    Toast.makeText(MainActivity.this,"Fields Are Empty!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Поля пусті!",Toast.LENGTH_SHORT).show();
                 }
                 else  if(!(email.isEmpty() && pwd.isEmpty())){ // && uName.isEmpty())){
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(MainActivity.this,"SignUp Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,"Щось пішло не так, спробуйте пізніше",Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 startActivity(new Intent(MainActivity.this,HomeActivity.class));
@@ -71,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
                 else{
-                    Toast.makeText(MainActivity.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Помилка!",Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -87,4 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-}
+        else {
+            Intent inte = new Intent(MainActivity.this,HomeActivity.class);
+            startActivity(inte);
+        }
+} }

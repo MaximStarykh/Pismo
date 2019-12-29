@@ -28,7 +28,7 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 public class HomeActivity  extends AppCompatActivity {
 
     private static int SIGN_IN_CODE = 1;
-    private RelativeLayout activity_main;
+    private RelativeLayout activity_home;
     private FirebaseListAdapter<Message> adapter; //адаптація данних з БД в об'єкти
     private EmojiconEditText emojiconEditText;
     private ImageView emojiButton, sendButton;
@@ -70,22 +70,7 @@ public class HomeActivity  extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //перевірка на успішність авторизації
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SIGN_IN_CODE) {
-            if(resultCode == RESULT_OK) {
-                Snackbar.make(activity_main, "Авторизація в Pismo пройшла успішно", Snackbar.LENGTH_LONG).show();
-                displayAllMessages();
-            }
-            else {
-                Snackbar.make(activity_main, "Ой-ой, під час авторизації щось пішло не так", Snackbar.LENGTH_LONG).show();
-                finish();
-            }
-        }
-    }
 
-    //public void addListenerOnButton() {
 
 
 
@@ -95,11 +80,11 @@ public class HomeActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        activity_main = findViewById(R.id.activity_home);
+        activity_home = findViewById(R.id.activity_home);
         sendButton = findViewById(R.id.send_btn);
         emojiButton = findViewById(R.id.emoji_btn);
         emojiconEditText = findViewById(R.id.textField);
-        emojIconActions = new EmojIconActions(getApplicationContext(), activity_main, emojiconEditText, emojiButton); //визов клавіатури з емодзі
+        emojIconActions = new EmojIconActions(getApplicationContext(), activity_home, emojiconEditText, emojiButton); //визов клавіатури з емодзі
         emojIconActions.ShowEmojIcon();
         // backToChat = (Button) findViewById(R.id.back_to_chat);
 
@@ -115,7 +100,7 @@ public class HomeActivity  extends AppCompatActivity {
                     return;
 
                 FirebaseDatabase.getInstance().getReference().push().setValue( // підключаємось до БД та добавляємо повідомелення у неї
-                        new Message(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                        new Message(FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                                 emojiconEditText.getText().toString()
                         )
                 );
@@ -128,7 +113,7 @@ public class HomeActivity  extends AppCompatActivity {
         if(FirebaseAuth.getInstance().getCurrentUser() == null) // юезр не авторизований
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_CODE); // авторизація юзера
         else {
-            Snackbar.make(activity_main, "Авторизація в Pismo пройшла успішно", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(activity_home, "Раді Вас бачити у Pismo!", Snackbar.LENGTH_LONG).show();
             displayAllMessages();
         }
     }
