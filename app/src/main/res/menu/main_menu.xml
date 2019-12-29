@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_menu">
+
+    <item
+        android:id="@+id/infopage"
+        android:orderInCategory="1"
+        android:title="o Pismo " />
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="2"
+        android:title="Log out" />
+
+</menu>

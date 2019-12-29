@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/info_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoActivity">
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="157dp"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:autoLink="web"
+        android:focusable="true"
+        android:fontFamily="@font/montserrat"
+        android:text="t.me/Starykh"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dev"
+        android:layout_width="157dp"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="169dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Maxim Fesenko"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/mail"
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="84dp"
+        android:layout_toStartOf="@+id/link"
+        app:srcCompat="@mipmap/mail_big" />
+
+    <ImageView
+        android:id="@+id/dev_img"
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="156dp"
+        android:layout_toStartOf="@+id/link"
+        app:srcCompat="@mipmap/dev_big" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/logo_big" />
+
+    <TextView
+        android:id="@+id/Pismo"
+        android:layout_width="418dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="-25dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="#000000"
+        android:text="Pismo v0.9.5"
+        android:textAlignment="center"
+        android:textSize="45sp" />
+
+    <Button
+        android:id="@+id/back_to_chat"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Повернтись до чату" />
+
+</RelativeLayout>
