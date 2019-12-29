@@ -1,159 +1,90 @@
 package maximstarykh.github.io;
 
-import androidx.annotation.Nullable;
+
+import android.content.Intent;
+//import android.support.annotation.NonNull;
+//import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.database.FirebaseListAdapter;
-import com.github.library.bubbleview.BubbleTextView;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
-import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static int SIGN_IN_CODE = 1;
-    private RelativeLayout activity_main;
-    private FirebaseListAdapter<Message> adapter; //адаптація данних з БД в об'єкти
-    private EmojiconEditText emojiconEditText;
-    private ImageView emojiButton, sendButton;
-    private EmojIconActions emojIconActions;
-    //private Button backToChat;
-
-
-
-    public MainActivity() {
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) { //ініціалізація меню
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) { //саме меню
-        int id = item.getItemId();
-
-        switch(id){
-            case R.id.infopage:
-               // setContentView(R.layout.info_page);
-                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                        startActivity(intent);
-                return true;
-            case R.id.logout: { // логаут та виклик авторизації знову
-                FirebaseAuth.getInstance().signOut();
-                if(FirebaseAuth.getInstance().getCurrentUser() == null) // юезр не авторизований
-                    startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_CODE); // авторизація юзера
-            }
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //перевірка на успішність авторизації
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == SIGN_IN_CODE) {
-            if(resultCode == RESULT_OK) {
-                Snackbar.make(activity_main, "Авторизація в Pismo пройшла успішно", Snackbar.LENGTH_LONG).show();
-                displayAllMessages();
-            }
-            else {
-                Snackbar.make(activity_main, "Ой-ой, під час авторизації щось пішло не так", Snackbar.LENGTH_LONG).show();
-                finish();
-            }
-        }
-    }
-
-    //public void addListenerOnButton() {
-
-
+    EditText emailId, password, userName;
+    Button btnSignUp;
+    TextView tvSignIn;
+    FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        activity_main = findViewById(R.id.activity_main);
-        sendButton = findViewById(R.id.send_btn);
-        emojiButton = findViewById(R.id.emoji_btn);
-        emojiconEditText = findViewById(R.id.textField);
-        emojIconActions = new EmojIconActions(getApplicationContext(), activity_main, emojiconEditText, emojiButton); //визов клавіатури з емодзі
-        emojIconActions.ShowEmojIcon();
-       // backToChat = (Button) findViewById(R.id.back_to_chat);
-
-
-
-
-
-        sendButton.setOnClickListener(new View.OnClickListener() { //обробник подій при натисканні на кнопку
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        emailId = findViewById(R.id.editText);
+        password = findViewById(R.id.editText2);
+        userName = findViewById(R.id.editText3);
+        btnSignUp = findViewById(R.id.button2);
+        tvSignIn = findViewById(R.id.textView);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = emailId.getText().toString();
+                String pwd = password.getText().toString();
+                String uName = userName.getText().toString();
+                if(email.isEmpty()){
+                    emailId.setError("Please enter email id");
+                    emailId.requestFocus();
+                }
+                else  if(pwd.isEmpty()){
+                    password.setError("Please enter your password");
+                    password.requestFocus();
+                }
+              /*  else  if(uName.isEmpty()){
+                    password.setError("Please enter your Display Name");
+                    password.requestFocus();
+                } */
+                else  if(email.isEmpty() && pwd.isEmpty()){ // && uName.isEmpty()){
+                    Toast.makeText(MainActivity.this,"Fields Are Empty!",Toast.LENGTH_SHORT).show();
+                }
+                else  if(!(email.isEmpty() && pwd.isEmpty())){ // && uName.isEmpty())){
+                    mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(MainActivity.this,"SignUp Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                            }
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
 
-                if(emojiconEditText.getText().toString().equals("")) // якщо повідомлення пусте, то нічого не відбудеться
-                    return;
+                }
+            }
+        });
 
-                FirebaseDatabase.getInstance().getReference().push().setValue( // підключаємось до БД та добавляємо повідомелення у неї
-                        new Message(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
-                                emojiconEditText.getText().toString()
-                        )
-                );
-                emojiconEditText.setText("");
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(i);
             }
         });
 
 
-
-        if(FirebaseAuth.getInstance().getCurrentUser() == null) // юезр не авторизований
-            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_CODE); // авторизація юзера
-        else {
-            Snackbar.make(activity_main, "Авторизація в Pismo пройшла успішно", Snackbar.LENGTH_LONG).show();
-            displayAllMessages();
-        }
     }
-
-
-
-   private void displayAllMessages() {
-       ListView listOfMessages =  findViewById(R.id.list_of_messages);
-       adapter = new FirebaseListAdapter<Message>(this, Message.class, R.layout.list_item, FirebaseDatabase.getInstance().getReference()) { //визиваємо метод класу, файл з розміткую та підключення до БД
-           @Override
-           protected void populateView(View v, Message model, int position) {
-               TextView msg_user, msg_time;
-               BubbleTextView msg_text;
-
-               msg_user = v.findViewById(R.id.message_user); //v. - знаходимо потрібні данні всередині вікна з яким працюємо
-               msg_time = v.findViewById(R.id.message_time);
-               msg_text = v.findViewById(R.id.message_text);
-
-               msg_user.setText(model.getUserName());
-               msg_text.setText(model.getTextMessage());
-               msg_time.setText(DateFormat.format("dd-mm-yyy HH:mm:ss", model.getMessageTime()));
-           }
-       };
-
-       listOfMessages.setAdapter(adapter);
-    }
-
-
-
 }

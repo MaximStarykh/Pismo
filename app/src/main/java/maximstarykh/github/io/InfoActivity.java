@@ -24,7 +24,7 @@ public class InfoActivity extends AppCompatActivity {
         backToChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InfoActivity.this, MainActivity.class);
+                Intent intent = new Intent(InfoActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

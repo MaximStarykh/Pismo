@@ -11,15 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:fontFamily="@font/montserrat_bold"
-        android:textStyle="normal|bold" />
+        android:fontFamily="@font/press_start_2p"
+        android:textStyle="normal|bold"
+        android:textSize="11sp"/>
 
     <TextView
         android:id="@+id/message_time"
+        android:textSize="9sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:fontFamily="@font/montserrat" />
+        android:fontFamily="@font/press_start_2p" />
 
     <com.github.library.bubbleview.BubbleTextView
         android:id="@+id/message_text"
@@ -30,11 +32,11 @@
         android:layout_marginTop="5dp"
         android:textColor="#fff"
         android:padding="10dp"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/press_start_2p"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp"
-        app:angle = "8dp"
-        app:arrowWidth="10dp"
+        android:textSize="12sp"
+        app:angle = "2dp"
+        app:arrowWidth="5dp"
         app:arrowHeight="10dp"
         app:arrowPosition = "10dp"
         app:arrowLocation = "left"
