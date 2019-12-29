@@ -5,22 +5,28 @@
     android:id="@+id/info_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfoActivity">
+    tools:context=".InfoActivity"
+    android:background="#808080">
 
-    <TextView
-        android:id="@+id/link"
-        android:layout_width="251dp"
-        android:layout_height="32dp"
+    <Button
+        android:id="@+id/back_to_chat"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="104dp"
-        android:autoLink="web"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="32dp"
+        android:background="#c4c4c4"
         android:fontFamily="@font/press_start_2p"
-        android:text="t.me/Starykh"
-        android:textSize="18sp" />
+        android:text="Повернтись до чату"
+        android:textColor="#000000"
+        android:textColorHighlight="#001DD8D2"
+        app:strokeColor="#000000"
+        app:strokeWidth="6dp" />
 
     <TextView
         android:id="@+id/dev"
@@ -29,23 +35,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="174dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="226dp"
         android:fontFamily="@font/press_start_2p"
         android:text="Maxim Fesenko"
+        android:textColor="#000000"
         android:textSize="18sp" />
-
-    <ImageView
-        android:id="@+id/mail"
-        android:layout_width="111dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="84dp"
-        android:layout_toStartOf="@+id/link"
-        app:srcCompat="@mipmap/mail_big" />
 
     <ImageView
         android:id="@+id/dev_img"
@@ -53,18 +48,48 @@
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="14dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="211dp"
         android:layout_toStartOf="@+id/link"
         app:srcCompat="@mipmap/dev_big" />
+
+    <ImageView
+        android:id="@+id/mail"
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="139dp"
+        android:layout_toStartOf="@+id/link"
+        app:srcCompat="@mipmap/mail_big" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="251dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="155dp"
+        android:autoLink="web"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/press_start_2p"
+        android:text="t.me/Starykh"
+        android:textColorLink="#D82986"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="310dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-53dp"
         app:srcCompat="@mipmap/logo_big" />
 
     <TextView
@@ -72,21 +97,12 @@
         android:layout_width="418dp"
         android:layout_height="73dp"
         android:layout_below="@+id/logo"
-        android:layout_marginTop="-25dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-66dp"
         android:fontFamily="@font/press_start_2p"
-        android:text="Pismo v0.9.5"
+        android:text="v0.9.5"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="27sp" />
-
-    <Button
-        android:id="@+id/back_to_chat"
-        style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/press_start_2p"
-        android:text="Повернтись до чату" />
 
 </RelativeLayout>
