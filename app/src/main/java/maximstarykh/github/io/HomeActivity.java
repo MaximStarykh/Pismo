@@ -60,7 +60,7 @@ public class HomeActivity  extends AppCompatActivity {
             case R.id.logout: { // логаут та виклик авторизації знову
                 FirebaseAuth.getInstance().signOut();
                 if(FirebaseAuth.getInstance().getCurrentUser() == null) { // юезр не авторизований
-                    Intent i = new Intent(HomeActivity.this, InfoActivity.class);
+                    Intent i = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(i);} // авторизація юзера
             }
             return true;

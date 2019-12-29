@@ -8,6 +8,32 @@
     android:background="#808080">
 
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="406dp"
+        android:layout_height="279dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/logo_big" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="235dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="52dp"
+        android:fontFamily="@font/press_start_2p"
+        android:text="Вже є аккаунт? Увійдіть тут"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="220dp"
@@ -19,13 +45,14 @@
         android:ems="10"
         android:fontFamily="@font/press_start_2p"
         android:hint="Email"
-        android:textColor="#fff"
         android:inputType="textEmailAddress"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.722" />
 
     <EditText
         android:id="@+id/editText2"
@@ -38,14 +65,14 @@
         android:ems="10"
         android:fontFamily="@font/press_start_2p"
         android:hint="Password"
-        android:textColor="#fff"
         android:inputType="textPassword"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <EditText
         android:id="@+id/editText3"
@@ -58,28 +85,14 @@
         android:ems="10"
         android:fontFamily="@font/press_start_2p"
         android:hint="Display Name"
-        android:textColor="#fff"
         android:inputType="textPersonName"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="235dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="163dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="136dp"
-        android:fontFamily="@font/press_start_2p"
-        android:text="Вже є аккаунт? Увійдіть тут"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.051" />
 
     <Button
         android:id="@+id/button2"
@@ -96,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.951" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
