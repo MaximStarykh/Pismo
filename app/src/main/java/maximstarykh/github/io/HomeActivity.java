@@ -134,7 +134,7 @@ public class HomeActivity  extends AppCompatActivity {
 
                 msg_user.setText(model.getUserName());
                 msg_text.setText(model.getTextMessage());
-                msg_time.setText(DateFormat.format("dd-mm-yyy HH:mm:ss", model.getMessageTime()));
+                msg_time.setText(DateFormat.format("dd-MM-yyy HH:mm:ss", model.getMessageTime()));
             }
         };
 
