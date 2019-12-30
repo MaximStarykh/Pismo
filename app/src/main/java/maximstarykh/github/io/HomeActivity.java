@@ -1,5 +1,6 @@
 package maximstarykh.github.io;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
@@ -33,7 +36,8 @@ public class HomeActivity  extends AppCompatActivity {
     private EmojiconEditText emojiconEditText;
     private ImageView emojiButton, sendButton;
     private EmojIconActions emojIconActions;
-    //private Button backToChat;
+    private static long back_pressed;
+
 
 
 
@@ -118,6 +122,16 @@ public class HomeActivity  extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+             moveTaskToBack(true);
+        }
+        else
+            Toast.makeText(getBaseContext(), "Натисніть ще раз для виходу!",
+                    Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis(); }
 
 
     private void displayAllMessages() {
