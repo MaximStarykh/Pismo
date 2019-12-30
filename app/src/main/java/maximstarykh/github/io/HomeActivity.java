@@ -39,8 +39,6 @@ public class HomeActivity  extends AppCompatActivity {
     private static long back_pressed;
 
 
-
-
     public HomeActivity() {
     }
 
