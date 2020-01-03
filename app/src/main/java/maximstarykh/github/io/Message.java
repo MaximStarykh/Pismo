@@ -29,6 +29,7 @@ public class Message {
         return messageTime;
     }
 
+
     public void setMessageTime(long messageTime) {
         this.messageTime = messageTime;
     }
