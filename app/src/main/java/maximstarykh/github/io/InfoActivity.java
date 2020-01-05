@@ -15,10 +15,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_page);
 
-
-
         backToChat = (Button) findViewById(R.id.back_to_chat);
-
 
         backToChat.setOnClickListener(new View.OnClickListener() {
             @Override

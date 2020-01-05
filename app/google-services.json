@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "561143441990",
+    "firebase_url": "https://pismo-13bef.firebaseio.com",
+    "project_id": "pismo-13bef",
+    "storage_bucket": "pismo-13bef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561143441990:android:96e82291850cd945053847",
+        "android_client_info": {
+          "package_name": "maximstarykh.github.io"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561143441990-95d3aavlclifvqi1or59gthj4u88k47f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "maximstarykh.github.io",
+            "certificate_hash": "e7382a270608c40e198f1459c2e46321174e2ea6"
+          }
+        },
+        {
+          "client_id": "561143441990-99o716k0qsmtn3i23t8uvacngod8dk5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKz0qBiNE8bILVfp8XPfJQ3p0GJv4Bpqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561143441990-99o716k0qsmtn3i23t8uvacngod8dk5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

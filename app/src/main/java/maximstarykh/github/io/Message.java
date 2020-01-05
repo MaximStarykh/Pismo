@@ -7,7 +7,8 @@ public class Message {
     public String textMessage;
     public long messageTime;
 
-    public Message() {}
+    public Message() {
+    }
 
     public String getUserName() {
         return userName;
@@ -29,7 +30,6 @@ public class Message {
         return messageTime;
     }
 
-
     public void setMessageTime(long messageTime) {
         this.messageTime = messageTime;
     }
@@ -39,7 +39,6 @@ public class Message {
         this.textMessage = textMessage;
 
         this.messageTime = new Date().getTime();
-
 
     }
 }
