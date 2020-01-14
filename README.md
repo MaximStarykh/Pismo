@@ -1,2 +1,4 @@
-# Pismo
- Firebase chat app 
+# PismoChat
+*Firebase chat app*
+
+Readme will be written soon
